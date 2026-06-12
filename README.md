@@ -25,25 +25,24 @@ todo/
 │
 ├── app/
 │   ├── routes/
-│   │   ├── __init__.py       # Sets up the blueprints
-│   │   ├── auth.py           # Login, registration, and logout logic
-│   │   └── tasks.py          # Creating, updating, and deleting tasks
+│   │   ├── __init__.py       
+│   │   ├── auth.py           
+│   │   └── tasks.py         
 │   │
 │   ├── static/
 │   │   └── css/
-│   │       └── style.css     # Custom minimalist styling (zero blue tones)
-│   │
+│   │       └── style.css     
 │   ├── templates/
-│   │   ├── base.html         # Main layout header, nav, and flash messages
-│   │   ├── login.html        # Clean login screen
-│   │   ├── register.html     # Signup screen
-│   │   └── tasks.html        # The main dashboard workspace
+│   │   ├── base.html        
+│   │   ├── login.html        
+│   │   ├── register.html    
+│   │   └── tasks.html        
 │   │
-│   ├── __init__.py           # Initializes the Flask app and database
-│   └── models.py             # Database models for Users and Tasks
+│   ├── __init__.py          
+│   └── models.py           
 │
 ├── instance/
-│   └── todo.db               # Your local SQLite database file
+│   └── todo.db              
 │
-├── .gitignore                # Stops junk files from going to GitHub
-└── run.py                    # The main entry point to start the app
+├── .gitignore               
+└── run.py                
