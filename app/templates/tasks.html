@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}My Dashboard{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <h2>Greetings, {{ session['user'] }}! Here are your tasks:</h2>
+    </div>
+
+    <form action="{{ url_for('tasks.add') }}" method="POST" class="add-task-form">
+        <input type="text" name="adding_task" placeholder="What needs to be done today?" required>
+        <button type="submit" class="btn btn-success">Add Task</button>
+    </form>
+
+    <div class="tasks-list">
+        {% if task %}
+            {% for item in task %}
+                <div class="task-card status-{{ item.status }}">
+                    <div class="task-info">
+                        <span class="task-title">{{ item.title }}</span>
+                        <span class="task-time">{{ item.time.strftime('%Y-%m-%d %H:%M') }} UTC</span>
+                    </div>
+                    
+                    <div class="task-actions">
+                        <form action="{{ url_for('tasks.status_change', task_id=item.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="status-badge badge-{{ item.status }}">
+                                {{ item.status | capitalize }}
+                            </button>
+                        </form>
+                        
+                        <a href="{{ url_for('tasks.delete', task_id=item.id) }}" class="btn-delete"">
+                            &times;
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="no-tasks">Your todo list is clean! Add a task above to begin.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
